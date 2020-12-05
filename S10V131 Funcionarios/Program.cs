@@ -30,15 +30,21 @@ namespace S10V131_Funcionarios
                 Console.Write("Value per hour: ");
                 double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                if (outsourced == "y" && outsourced == "Y")
+                if (outsourced == "y" || outsourced == "Y")
                 {
                     Console.Write("Additional charge: ");
                     double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                    list.Add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
+                    list.Add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
                 }
+                else
+                    list.Add(new Employee(name, hours, valuePerHour));
+            }
 
-
-
+            Console.WriteLine();
+            Console.WriteLine("PAYMENTS:");
+            foreach (Employee emp in list)
+            {
+                Console.WriteLine(emp.Name+" - $"+emp.Payment().ToString("F2",CultureInfo.InvariantCulture));
             }
         }
     }
